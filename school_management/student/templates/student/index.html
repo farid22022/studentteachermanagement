@@ -1,0 +1,144 @@
+{% comment %} <DOCTYPE/>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>School Management System</title>
+    </head> 
+    <body>
+        <h1>Welcome to Student Profile</h1>
+        <h2>Students</h2>
+        <p>Name : {{ name }}</p>
+        {% if age > 20 %}
+        <p>Age : {{ age }} </p>
+        {% else %}
+        <p>You can't drive</p>
+        {% endif %}
+        <p>Marks</p>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Subject</th>
+                <th>Marks</th>
+                <th>Grade</th>
+            </tr>
+            {% for mark in marks %}
+            <tr>
+                <td>{{ mark.id }}</td>
+                <td>{{ mark.subject }}</td>
+                <td>{{ mark.marks }}</td>
+                <td>
+                    {% if mark.marks > 80 %}
+                    A
+                    {% elif mark.marks > 60 %}
+                    B
+                    {% elif mark.marks > 40 %}
+                    C
+                    {% else %}
+                    F
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+            
+
+    </body> {% endcomment %}
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Management System - Student Profiles</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A-plus {
+            color: green;
+            font-weight: bold;
+        }
+        .grade-A {
+            color: blue;
+        }
+        .grade-B {
+            color: orange;
+        }
+        .grade-C {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Student Profiles</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Subjects & Marks</th>
+            <th>Total Marks</th>
+            <th>Average Marks</th>
+            <th>Grade</th>
+        </tr>
+
+        {% for student in result %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>
+                <table style="width: 100%; border: none;">
+                    <tr>
+                        <th>Subject</th>
+                        <th>Marks</th>
+                    </tr>
+                    {% for subject in student.results %}
+                    <tr>
+                        <td>{{ subject.subject }}</td>
+                        <td>{{ subject.marks }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </td>
+            <td>{{ student.totalMarks }}</td>
+            <td>{{ student.averageMarks }}</td>
+            <td>
+                <span class="{% if student.grade == 'A+' %}grade-A-plus
+                               {% elif student.grade == 'A' %}grade-A
+                               {% elif student.grade == 'B' %}grade-B
+                               {% elif student.grade == 'C' %}grade-C
+                               {% endif %}">
+                    {{ student.grade }}
+                </span>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
