@@ -87,7 +87,7 @@ def profile(request):
             ],
             "totalMarks": 350,
             "averageMarks": 70,
-            "grade": "B"
+               "grade": "B"
         },
         {
             "id": 5,
@@ -199,7 +199,7 @@ def profile(request):
             ],
             "totalMarks": 390,
             "averageMarks": 78,
-            "grade": "B+"
+               "grade": "B+"
         },
         {
             "id": 13,
@@ -241,7 +241,7 @@ def profile(request):
             ],
             "totalMarks": 430,
             "averageMarks": 86,
-            "grade": "A+"
+               "grade": "A+"
         },
         {
             "id": 16,
